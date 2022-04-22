@@ -6,7 +6,8 @@ import { TodoList } from './todo/todo-list'
 
 interface Item {
   value: string,
-  id: number
+  id: number,
+  isReady: boolean
 
 }
 
@@ -14,19 +15,26 @@ interface Item {
 
 function App() {
 
-  const [notes, setNotes] = useState<Array<object>>([]);
+  const [notes, setNotes] = useState<Array<Item>>([]);
 
   const addTodo = (value: string) => {
 
     const newItem: Item = {
       value: value,
-      id: Date.now()
+      id: Date.now(),
+      isReady: false
+
     }
-
-
 
     setNotes(prev => [...prev, newItem])
 
+  }
+
+  const dellTodo = (id: number) => {
+
+    setNotes(prev => prev.filter(item => item.id !== id))
+
+    
   }
 
   return (
@@ -35,7 +43,7 @@ function App() {
       <div className="container">
 
         <AddTodo addTodo={addTodo} />
-        <TodoList list={notes}/>
+        <TodoList list={notes} dellTodo={dellTodo} />
 
       </div>
     </>

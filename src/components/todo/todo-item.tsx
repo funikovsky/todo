@@ -3,16 +3,23 @@ import {FC} from 'react'
 interface TodoItemProps {
     item: {
         value: string,
-        id: number
-    }
+        id: number,
+        isReady: boolean
+    },
+
+    dellTodo: (id: number) => void 
+    
+        
      
   }
 
   
   
-  export const TodoItem: FC<TodoItemProps> = ({item}) => {
+  export const TodoItem: FC<TodoItemProps> = ({item, dellTodo}) => {
 
-    const {value} = item
+    
+    const {value, id} = item
+    
     
     if(!value) {
     
@@ -22,6 +29,7 @@ interface TodoItemProps {
     return (
       <div  className="note">
         {value || ""}
+        <button className='btn-dell' onClick={dellTodo}>Удалить</button>
       </div>
     );
   };
