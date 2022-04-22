@@ -33,17 +33,29 @@ function App() {
   const dellTodo = (id: number) => {
 
     setNotes(prev => prev.filter(item => item.id !== id))
-
-    
   }
+
+  const onToggleDone = (id: number) => {
+    setNotes(prev => prev.map(item => {
+      if(item.id === id) {
+        return {...item, isReady : !item.isReady}
+      }
+      return item
+    }))
+  }
+
+
+  const readyNotes = notes.filter(item => item.isReady === true)
+  const notReadyNotes = notes.filter(item => item.isReady !==true)
+  const visibleNotes = [...notReadyNotes, ...readyNotes]
 
   return (
     <>
-      <div className="header">TODO LIST</div>
+      <div className="header">TODO LIST: {notes.length} notes</div>
       <div className="container">
 
         <AddTodo addTodo={addTodo} />
-        <TodoList list={notes} dellTodo={dellTodo} />
+        <TodoList list={visibleNotes} dellTodo={dellTodo} onToggleDone={onToggleDone}/>
 
       </div>
     </>

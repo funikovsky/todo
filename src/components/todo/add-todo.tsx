@@ -31,6 +31,7 @@ export const AddTodo: FC<AddTodoProps> = ({ addTodo }) => {
                 className="textInput"
                 autoFocus
                 onChange={(e) => setValue(e.target.value)}
+                placeholder="Введите заметку"
 
             />
         </>

@@ -46,6 +46,10 @@ body {
 .note:hover {
   transform: scale(1.02);
 }
+.note-done {
+  background: green;
+  text-decoration: line-through;
+}
 .btn {
   position: fixed;
   z-index: 1;
@@ -70,12 +74,26 @@ body {
   transform: scale(1.2);
 }
 .btn-dell {
-  display: block;
+ 
   background: red;
   border-radius: 37px;
   color: #e9e9e9;
   font-weight: bold;
+  cursor: pointer;
 
+}
+.btn-done {
+ 
+  background: green;
+  border-radius: 37px;
+  color: #e9e9e9;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 10px;
+
+}
+.btn-done:hover {
+  transform: scale(1.2);
 }
 
 .btn-dell:hover {
