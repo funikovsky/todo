@@ -1,4 +1,4 @@
-import {FC} from 'react'
+import { FC } from 'react'
 
 interface TodoItemProps {
     item: {
@@ -7,29 +7,26 @@ interface TodoItemProps {
         isReady: boolean
     },
 
-    dellTodo: (id: number) => void 
-    
-        
-     
-  }
+    dellTodo: (id: number) => void
 
-  
-  
-  export const TodoItem: FC<TodoItemProps> = ({item, dellTodo}) => {
 
-    
-    const {value, id} = item
-    
-    
-    if(!value) {
-    
-        return <></>
-    }
+
+}
+
+
+
+export const TodoItem: FC<TodoItemProps> = ({ item, dellTodo }) => {
+
+
+    const { value, id } = item
+
+
+   
 
     return (
-      <div  className="note">
-        {value || ""}
-        <button className='btn-dell' onClick={dellTodo}>Удалить</button>
-      </div>
+        <div className="note">
+            {value || ""}
+            <button className='btn-dell' onClick={() => dellTodo(id)}>Удалить</button>
+        </div>
     );
-  };
+};
